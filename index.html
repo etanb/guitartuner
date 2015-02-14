@@ -1,0 +1,18 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<script>
+			function hasGetUserMedia() {
+			  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+			            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+			}
+
+			if (hasGetUserMedia()) {
+			  // Good to go!
+			} else {
+			  alert('This site will not work in your browser. Please purchase a new computer and get a better browser.');
+			}
+		</script>
+	</body>
+</html>
