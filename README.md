@@ -6,3 +6,5 @@ Will be using this guide as a building reference: http://jonathan.bergknoff.com/
 References in order of usage:
 
 http://www.html5rocks.com/en/tutorials/getusermedia/intro/
+
+https://github.com/cwilso/PitchDetect/blob/master/js/pitchdetect.js

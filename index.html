@@ -8,8 +8,36 @@
 			            navigator.mozGetUserMedia || navigator.msGetUserMedia);
 			}
 
+			window.AudioContext = window.AudioContext ||
+			                      window.webkitAudioContext;
+
+			var context = new AudioContext();
+
 			if (hasGetUserMedia()) {
-			  // Good to go!
+			  navigator.getUserMedia = ( navigator.getUserMedia ||
+			                         navigator.webkitGetUserMedia ||
+			                         navigator.mozGetUserMedia ||
+			                         navigator.msGetUserMedia);
+			  navigator.getUserMedia (
+
+			        {
+			           video: false,
+			           audio: true
+			        },
+
+			        function(stream) {
+			           var microphone = context.createMediaStreamSource(stream);
+			           var filter = context.createBiquadFilter();
+
+			           // microphone -> filter -> destination.
+			           microphone.connect(filter);
+			           filter.connect(context.destination);
+			        },
+
+			        function(err) {
+			           console.log("The following error occured: " + err);
+			        }
+			     );
 			} else {
 			  alert('This site will not work in your browser. Please purchase a new computer and get a better browser.');
 			}
